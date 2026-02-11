@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID VFX — Submit Order</title>
+<style>
+  body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0a0a0a, #000);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 50px 10px;
+  }
+  .container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border:1px solid rgba(255,0,0,0.2);
+  }
+  h1 {text-align:center; color:#ff1a1a; margin-bottom:20px;}
+  input, textarea, button {
+    width:100%;
+    margin:10px 0;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    font-size:16px;
+  }
+  button {
+    background: linear-gradient(45deg,#ff0000,#ff4d6d);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+  }
+  button:hover {transform:scale(1.05); box-shadow:0 0 20px rgba(255,0,0,0.5);}
+  label {margin-top:10px; display:block;}
+  .small {font-size:13px; opacity:.7; margin-top:5px;}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Submit Your Order</h1>
+  <form id="orderForm" action="https://formspree.io/f/xvzbzvnd" method="POST">
+    <label>
+      Your Name:
+      <input type="text" name="name" required>
+    </label>
+    <label>
+      Email:
+      <input type="email" name="email" required>
+    </label>
+    <label>
+      Project Details:
+      <textarea name="details" rows="4" required></textarea>
+    </label>
+    <label>
+      Video Link (Mega / Google Drive / Dropbox):
+      <input type="url" name="video_link" placeholder="Paste your link here" required>
+      <div class="small">No file upload needed — unlimited storage via your link.</div>
+    </label>
+    <button type="submit">Submit Order</button>
+  </form>
+  <div class="small">After submitting, check your email for confirmation.</div>
+</div>
+<script>
+  const form = document.getElementById('orderForm');
+  form.addEventListener('submit', function(e){
+    alert('Order submitted! You will receive a confirmation email shortly.');
+  });
+</script>
+</body>
+</html>

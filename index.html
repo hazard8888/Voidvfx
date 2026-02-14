@@ -187,7 +187,7 @@
       top: 0;
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 25px 60px;
       background: rgba(5, 5, 5, 0.7);
@@ -205,20 +205,24 @@
     }
     
     header h1 {
-      font-family: 'Orbitron', sans-serif;
-      color: #fff;
-      font-size: 32px;
-      letter-spacing: 4px;
-      font-weight: 900;
-      position: relative;
-      background: linear-gradient(90deg, #fff, var(--primary), var(--secondary), #fff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 3s linear infinite;
-      text-shadow: 0 0 30px rgba(255, 26, 26, 0.5);
-    }
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 32px;
+  letter-spacing: 4px;
+  font-weight: 900;
+  position: relative;
+
+  /* 👇 #fff hata diya */
+  background: linear-gradient(90deg, #000, var(--primary), #000, var(--secondary), #000);
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  animation: shimmer 3s linear infinite;
+  text-shadow: 0 0 30px rgba(255, 26, 26, 0.5);
+}
 
     @keyframes shimmer {
       to { background-position: 200% center; }
@@ -1024,6 +1028,7 @@
   </style>
 </head>
 <body>
+
   <!-- Background Elements -->
   <div class="bg-animation"></div>
   <canvas id="particles"></canvas>
@@ -1039,9 +1044,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
-    </nav>
-    <a href="https://wa.me/918126585456"><button class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</button></a>
-  </header>
+</header>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -1501,6 +1504,27 @@ document.addEventListener("DOMContentLoaded", () => {
   window.changeTestimonial = changeTestimonial;
 
 });
+</script>
+<script>
+const toggleBtn = document.getElementById("darkToggle");
+
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if (document.body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "dark");
+    toggleBtn.textContent = "🌙";
+  }
+});
+
 </script>
 </body>
 </html>

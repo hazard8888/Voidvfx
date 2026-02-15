@@ -1,0 +1,257 @@
+/* ================= DARK MODE ================= */
+
+/* BODY */
+body {
+  background-color: #121212; /* dark background */
+  color: #e0e0e0;            /* light text */
+  font-family: Arial, sans-serif;
+}
+
+/* LINKS */
+a {
+  color: #90caf9; /* light blue links */
+  text-decoration: none;
+}
+a:hover {
+  color: #64b5f6;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+  color: #e0e0e0;
+}
+
+/* PARAGRAPHS */
+p, li {
+  color: #cccccc;
+}
+
+/* SECTIONS / CARDS */
+section {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* CAROUSEL */
+.carousel-container {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-video {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+/* VIDEOS */
+.card-video video {
+  border-radius: 6px;
+}
+
+/* BUTTONS */
+button, .carousel-nav {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover, .carousel-nav:hover {
+  background-color: #555;
+}
+
+/* DOTS */
+.dot {
+  background-color: #555;
+}
+
+.dot.active {
+  background-color: #fff;
+}
+
+/* INPUTS / FORM ELEMENTS */
+input, textarea, select {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+/* NAVBAR / HEADER */
+header, nav {
+  background-color: #1b1b1b;
+  color: #e0e0e0;
+}
+
+/* FOOTER */
+footer {
+  background-color: #1b1b1b;
+  color: #cccccc;
+  padding: 20px;
+  text-align: center;
+}
+
+/* HOVER EFFECTS */
+a:hover, button:hover {
+  color: #90caf9;
+}
+
+/* TABLES */
+table {
+  background-color: #1c1c1c;
+  color: #e0e0e0;
+  border-collapse: collapse;
+}
+table th, table td {
+  border: 1px solid #333;
+  padding: 8px 12px;
+}
+table th {
+  background-color: #2a2a2a;
+}
+
+/* ===== TESTIMONIAL GLASS EFFECT ===== */
+
+#testimonials {
+  padding: 80px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, #111, #000);
+}
+
+/* Glass card */
+.testimonial {
+  display: none;
+  max-width: 420px;
+  margin: auto;
+  padding: 30px 25px;
+  border-radius: 20px;
+
+  /* Glass blur */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* Glowing gradient border */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+
+  /* Smooth fade animation */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+/* Gradient glow border using pseudo element */
+.testimonial::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  padding: 1px;
+
+  background: linear-gradient(135deg, #ff00cc, #3333ff, #00ffee);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+/* Active testimonial visible */
+.testimonial.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image styling */
+.testimonial img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 2px solid #fff;
+}
+
+/* Text */
+.testimonial p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin-bottom: 15px;
+}
+
+.testimonial strong {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Navigation buttons */
+.testimonial-nav button {
+  margin: 15px 8px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+
+  transition: 0.3s ease;
+}
+
+.testimonial-nav button:hover {
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  transform: scale(1.1);
+}
+/* ===== EXPERT SECTION ===== */
+
+.expert {
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.expert-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.expert-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 26, 26, 0.2);
+  border-radius: 18px;
+  padding: 40px 20px;
+  transition: 0.35s ease;
+}
+
+.expert-card i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #ff1a1a;
+}
+
+.expert-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* hover effect */
+.expert-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  border-color: rgba(255, 26, 26, 0.5);
+  box-shadow: 0 0 20px rgba(255, 26, 26, 0.25);
+}

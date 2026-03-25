@@ -1,106 +1,67 @@
-<!-- Payment Modal -->
-  <div id="paymentModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closePayment()"><i class="fas fa-times"></i></button>
-      <h3>Complete Your Payment</h3>
-      
-      <!-- Payment Tabs -->
-      <div class="payment-tabs">
-        <button class="payment-tab-btn active" onclick="switchPaymentTab('upi')">UPI</button>
-        <button class="payment-tab-btn" onclick="switchPaymentTab('bitcoin')">Bitcoin</button>
-        <button class="payment-tab-btn" onclick="switchPaymentTab('eth')">Ethereum/USDT</button>
-      </div>
-
-      <!-- UPI Tab -->
-      <div id="upi-tab" class="payment-tab-content active">
-        <p>Scan the QR code to pay via UPI</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=aryanbangwal24@oksbi" alt="UPI QR Code">
-        <p style="margin-top: 15px;"><strong>UPI ID:</strong> aryanbangwal24@oksbi</p>
-      </div>
-
-      <!-- Bitcoin Tab -->
-      <div id="bitcoin-tab" class="payment-tab-content" style="display:none;">
-        <p>Scan the QR code to pay via Bitcoin</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj" alt="Bitcoin QR Code">
-        <p style="margin-top: 15px;"><strong>Bitcoin Address:</strong><br>bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj</p>
-      </div>
-
-      <!-- Ethereum/USDT Tab -->
-      <div id="eth-tab" class="payment-tab-content" style="display:none;">
-        <p>Scan the QR code to pay via Ethereum/USDT</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0x381Dd751019c77F9f2FCcf8f632A1D3F07668159" alt="Ethereum/USDT QR Code">
-        <p style="margin-top: 15px;"><strong>Ethereum/USDT Address:</strong><br>0x381Dd751019c77F9f2FCcf8f632A1D3F07668159</p>
-      </div>
-
-      <p style="margin-top: 20px; opacity: 0.8;">After payment, contact us on WhatsApp with the screenshot</p>
-      <a href="https://wa.me/917060946433"><button class="btn" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button></a>
+<div class="payment-modal">
+    <div class="tabs">
+        <button class="tab-button" onclick="openTab(event, 'UPI')">UPI</button>
+        <button class="tab-button" onclick="openTab(event, 'Bitcoin')">Bitcoin</button>
+        <button class="tab-button" onclick="openTab(event, 'Ethereum')">Ethereum/USDT</button>
     </div>
-  </div>
 
-  <style>
-    /* PAYMENT TABS */
-    .payment-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-      justify-content: center;
-    }
-    
-    .payment-tab-btn {
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-    }
-    
-    .payment-tab-btn:hover {
-      background: rgba(255, 26, 26, 0.3);
-      border-color: rgba(255, 26, 26, 0.5);
-    }
-    
-    .payment-tab-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(255, 26, 26, 0.5);
-    }
-    
-    .payment-tab-content {
-      display: none;
-      text-align: center;
-    }
-    
-    .payment-tab-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    .payment-tab-content img {
-      width: 250px;
-      margin: 20px 0;
-      border-radius: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+    <div id="UPI" class="tab-content">
+        <h3>UPI</h3>
+        <p>Address: aryanbangwal24@oksbi</p>
+        <p><img src="path/to/upi-qr-code.png" alt="UPI QR Code" /></p>
+    </div>
 
-  <script>
-    function switchPaymentTab(tab) {
-      // Hide all tabs
-      document.querySelectorAll('.payment-tab-content').forEach(el => {
-        el.classList.remove('active');
-      });
-      document.querySelectorAll('.payment-tab-btn').forEach(el => {
-        el.classList.remove('active');
-      });
-      
-      // Show selected tab
-      const tabId = tab === 'upi' ? 'upi-tab' : tab === 'bitcoin' ? 'bitcoin-tab' : 'eth-tab';
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
+    <div id="Bitcoin" class="tab-content" style="display:none;">
+        <h3>Bitcoin</h3>
+        <p>Address: bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj</p>
+        <p><img src="path/to/bitcoin-qr-code.png" alt="Bitcoin QR Code" /></p>
+    </div>
+
+    <div id="Ethereum" class="tab-content" style="display:none;">
+        <h3>Ethereum/USDT</h3>
+        <p>Address: 0x381Dd751019c77F9f2FCcf8f632A1D3F07668159</p>
+        <p><img src="path/to/ethereum-qr-code.png" alt="Ethereum QR Code" /></p>
+    </div>
+</div>
+
+<style>
+.payment-modal {
+    /* Modal styling goes here */
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-button {
+    cursor: pointer;
+}
+
+.tab-content {
+    padding: 10px;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+</style>
+
+<script>
+function openTab(evt, tabName) {
+    // Hide all tab content
+    var tabContents = document.getElementsByClassName('tab-content');
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = 'none';
     }
-  </script>
+    // Remove active class from all buttons
+    var tabButtons = document.getElementsByClassName('tab-button');
+    for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].className = tabButtons[i].className.replace(' active', '');
+    }
+    // Show the current tab and add an active class to the button that opened the tab
+    document.getElementById(tabName).style.display = 'block';
+    evt.currentTarget.className += ' active';
+}
+</script>

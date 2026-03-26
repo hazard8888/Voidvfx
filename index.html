@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOID EDITS – Premium Video Editing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Elements -->
+  <div class="bg-animation"></div>
+  <canvas id="particles"></canvas>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <h1>VOID EDITS</h1>
+    <nav>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Premium Reel Editing</h2>
+      <p>Viral Shorts / Cinematic Reels / Pro Storytelling</p>
+      <div class="cta-buttons">
+        <a href="#pricing"><button class="btn">Explore Services</button></a>
+        <a href="#portfolio"><button class="btn btn-outline">View Portfolio</button></a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2 class="section-title">Our Work</h2>
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="card-video center">
+          <video src="https://res.cloudinary.com/dk9kocq3u/video/upload/Best_Spiderman_FR___Sp-_void__edits____tobeymaguire__spiderman__SpiderMan3___MJ__gwenstacy__rizz__bullymaguire__marvel___mcu_MP4_ogzhlu.mp4" autoplay muted loop playsinline preload="auto"></video>
+        </div>
+        <div class="card-video right">
+          <video src="https://res.cloudinary.com/dk9kocq3u/video/upload/v1770954858/Andrew_Garfield___Sp-_void__edits____spiderman__andrewgarfield__tasm___theamazingspiderman__movieclips___fypreels%E3%82%B7%E3%82%9A__sonyentertainment__spidermanedi_g7inwp.mp4" autoplay muted loop playsinline preload="auto"></video>
+        </div>
+        <div class="card-video left">
+          <video src="https://res.cloudinary.com/dk9kocq3u/video/upload/v1770954932/spiderman_x_timeless___Sp-_void__edits____spiderman__tobeymaguire__AndrewGarfield___tomholland__marvels__amvedit_MP4_zzbexj.mp4" autoplay muted loop playsinline preload="auto"></video>
+        </div>
+      </div>
+      <div class="carousel-nav prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+      <div class="carousel-nav next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
+    </div>
+  </section>
+
+  <!-- Expert Section -->
+  <section class="expert">
+    <h2 class="section-title">Expert In</h2>
+    <div class="expert-container">
+      <div class="expert-card">
+        <i class="fab fa-adobe"></i>
+        <h3>After Effects</h3>
+      </div>
+      <div class="expert-card">
+        <i class="fas fa-video"></i>
+        <h3>Premiere Pro</h3>
+      </div>
+      <div class="expert-card">
+        <i class="fas fa-magic"></i>
+        <h3>Motion Graphics</h3>
+      </div>
+      <div class="expert-card">
+        <i class="fas fa-film"></i>
+        <h3>Color Grading</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-box">
+        <h2 class="counter" data-target="50" data-plus="true">0</h2>
+        <span>Million Views</span>
+      </div>
+      <div class="stat-box">
+        <h2 class="counter" data-target="75">0</h2>
+        <span>Happy Clients</span>
+      </div>
+      <div class="stat-box">
+        <h2 class="counter" data-target="120">0</h2>
+        <span>Projects Completed</span>
+      </div>
+      <div class="stat-box">
+        <h2 class="counter" data-target="3" data-plus="true">0</h2>
+        <span>Years Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <h2 class="section-title">Pricing Plans</h2>
+    <div class="pricing">
+
+      <div class="card">
+        <h3>Basic</h3>
+        <div class="price">10$</div>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Basic edits &amp; effects</li>
+          <li><i class="fas fa-check-circle"></i> 3-4 days delivery</li>
+          <li><i class="fas fa-check-circle"></i> 1 revision included</li>
+          <li><i class="fas fa-check-circle"></i> HD export quality</li>
+        </ul>
+        <button class="btn" onclick="openPayment()">Get Started</button>
+      </div>
+
+      <div class="card featured">
+        <span class="badge">Popular</span>
+        <h3>Pro</h3>
+        <div class="price">20$</div>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Advanced VFX &amp; transitions</li>
+          <li><i class="fas fa-check-circle"></i> 2-3 days delivery</li>
+          <li><i class="fas fa-check-circle"></i> 2 revisions included</li>
+          <li><i class="fas fa-check-circle"></i> Professional color grading</li>
+          <li><i class="fas fa-check-circle"></i> 4K export quality</li>
+        </ul>
+        <button class="btn" onclick="openPayment()">Get Started</button>
+      </div>
+
+      <div class="card">
+        <h3>Premium</h3>
+        <div class="price">35$</div>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Full cinematic production</li>
+          <li><i class="fas fa-check-circle"></i> 2-3 days delivery</li>
+          <li><i class="fas fa-check-circle"></i> 3 revisions</li>
+          <li><i class="fas fa-check-circle"></i> Custom music selection</li>
+          <li><i class="fas fa-check-circle"></i> Personal consultation</li>
+        </ul>
+        <button class="btn" onclick="openPayment()">Get Started</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2 class="section-title">Client Reviews</h2>
+    <div class="testimonials-container">
+
+      <div class="testimonial active">
+        <img src="https://raw.githubusercontent.com/hazard8888/Voidvfx/refs/heads/main/Screenshot_20260211-204630.WhatsApp.png" alt="Manish"/>
+        <p>"Absolutely amazing work! The team at VOID VFX transformed my raw footage into viral-worthy content. Highly professional and creative!"</p>
+        <strong>Manish Pal – Content Creator, India</strong>
+      </div>
+
+      <div class="testimonial">
+        <img src="https://raw.githubusercontent.com/hazard8888/Voidvfx/refs/heads/main/Screenshot_20260214-015558.WhatsApp.png" alt="Himanshu"/>
+        <p>"Fast turnaround, incredible quality, and they really understood my vision. Best editing service I've used!"</p>
+        <strong>Himanshu – Entrepreneur, Nigeria</strong>
+      </div>
+
+      <div class="testimonial-nav">
+        <button onclick="changeTestimonial(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="changeTestimonial(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <form action="https://formspree.io/f/xvzbzvnd" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="subject" placeholder="Subject" required>
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn submit-btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://wa.me/917060946433" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/void__edits_" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@void_07?si=yRXY9MHmpkEp6ncX" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+      <p>&copy; 2026 VOID VFX. All rights reserved. Premium Video Editing Services.</p>
+    </div>
+  </footer>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closePayment()"><i class="fas fa-times"></i></button>
+      <h3>Complete Your Payment</h3>
+      <p>Scan the QR code below to proceed with payment</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=voidvfx@paytm" alt="Payment QR Code">
+      <p style="margin-top: 20px; opacity: 0.8;">After payment, contact us on WhatsApp with the screenshot</p>
+      <a href="https://wa.me/917060946433">
+        <button class="btn" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Your JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>

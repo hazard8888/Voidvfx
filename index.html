@@ -123,7 +123,7 @@
           <li><i class="fas fa-check-circle"></i> 1 revision included</li>
           <li><i class="fas fa-check-circle"></i> HD export quality</li>
         </ul>
-        <button class="btn" onclick="openPayment()">Get Started</button>
+        <button class="btn" onclick="openPayment('basic')">Get Started</button>
       </div>
 
       <div class="card featured">
@@ -137,7 +137,7 @@
           <li><i class="fas fa-check-circle"></i> Professional color grading</li>
           <li><i class="fas fa-check-circle"></i> 4K export quality</li>
         </ul>
-        <button class="btn" onclick="openPayment()">Get Started</button>
+        <button class="btn" onclick="openPayment('pro')">Get Started</button>
       </div>
 
       <div class="card">
@@ -150,7 +150,7 @@
           <li><i class="fas fa-check-circle"></i> Custom music selection</li>
           <li><i class="fas fa-check-circle"></i> Personal consultation</li>
         </ul>
-        <button class="btn" onclick="openPayment()">Get Started</button>
+        <button class="btn" onclick="openPayment('premium')">Get Started</button>
       </div>
 
     </div>
@@ -226,13 +226,93 @@
   <div id="paymentModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closePayment()"><i class="fas fa-times"></i></button>
-      <h3>Complete Your Payment</h3>
-      <p>Scan the QR code below to proceed with payment</p>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=voidvfx@paytm" alt="Payment QR Code">
-      <p style="margin-top: 20px; opacity: 0.8;">After payment, contact us on WhatsApp with the screenshot</p>
-      <a href="https://wa.me/917060946433">
-        <button class="btn" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button>
-      </a>
+
+      <!-- Plan badge -->
+      <h3 id="modal-plan-title">Complete Payment</h3>
+      <div id="modal-plan-badge" class="modal-plan-badge">Basic — $10</div>
+
+      <!-- Main tabs: UPI / Crypto -->
+      <div class="payment-tabs">
+        <button class="pay-tab active" onclick="switchPayTab('upi', this)">🇮🇳 UPI (India)</button>
+        <button class="pay-tab" onclick="switchPayTab('crypto', this)">🌍 Crypto (International)</button>
+      </div>
+
+      <!-- ===== UPI PANEL ===== -->
+      <div id="tab-upi" class="pay-panel">
+        <img id="upi-qr" src="" alt="UPI QR Code" class="modal-qr">
+        <p class="modal-upi-id"><i class="fas fa-id-badge"></i> aryanbangwal24@oksbi</p>
+        <button class="copy-btn" onclick="copyText('aryanbangwal24@oksbi', this)">
+          <i class="fas fa-copy"></i> Copy UPI ID
+        </button>
+        <p class="modal-sub">Or tap to open directly in your UPI app:</p>
+        <div class="upi-app-grid">
+          <a id="gpay-link" href="#" class="upi-app-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay">
+            <span>Google Pay</span>
+          </a>
+          <a id="phonepe-link" href="#" class="upi-app-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/PhonePe_Logo.png" alt="PhonePe">
+            <span>PhonePe</span>
+          </a>
+          <a id="paytm-link" href="#" class="upi-app-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Paytm_logo.png" alt="Paytm">
+            <span>Paytm</span>
+          </a>
+          <a id="upi-generic-link" href="#" class="upi-app-btn" target="_blank">
+            <i class="fas fa-mobile-alt upi-generic-icon"></i>
+            <span>Any UPI App</span>
+          </a>
+        </div>
+        <p class="modal-note"><i class="fas fa-info-circle"></i> After payment, share screenshot on WhatsApp</p>
+        <a href="https://wa.me/917060946433" target="_blank">
+          <button class="btn modal-wa-btn"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button>
+        </a>
+      </div>
+
+      <!-- ===== CRYPTO PANEL ===== -->
+      <div id="tab-crypto" class="pay-panel" style="display:none">
+        <div class="crypto-coin-tabs">
+          <button class="crypto-tab active" onclick="switchCrypto('btc', this)">₿ Bitcoin</button>
+          <button class="crypto-tab" onclick="switchCrypto('eth', this)">Ξ Ethereum</button>
+          <button class="crypto-tab" onclick="switchCrypto('usdt', this)">₮ USDT</button>
+        </div>
+
+        <!-- BTC -->
+        <div id="crypto-btc" class="crypto-panel">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj" alt="BTC QR" class="modal-qr">
+          <p class="crypto-network-badge">Bitcoin Network</p>
+          <p class="crypto-addr">bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj</p>
+          <button class="copy-btn" onclick="copyText('bc1p0twvr4kxtf2uzefp3nrkhzuqjz6sdsky9sa28am6hwmrerh8ln0q3gs7nj', this)">
+            <i class="fas fa-copy"></i> Copy BTC Address
+          </button>
+        </div>
+
+        <!-- ETH -->
+        <div id="crypto-eth" class="crypto-panel" style="display:none">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum:0x381Dd751019c77F9f2FCcf8f632A1D3F07668159" alt="ETH QR" class="modal-qr">
+          <p class="crypto-network-badge">Ethereum Network (ERC20)</p>
+          <p class="crypto-addr">0x381Dd751019c77F9f2FCcf8f632A1D3F07668159</p>
+          <button class="copy-btn" onclick="copyText('0x381Dd751019c77F9f2FCcf8f632A1D3F07668159', this)">
+            <i class="fas fa-copy"></i> Copy ETH Address
+          </button>
+        </div>
+
+        <!-- USDT -->
+        <div id="crypto-usdt" class="crypto-panel" style="display:none">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum:0x381Dd751019c77F9f2FCcf8f632A1D3F07668159" alt="USDT QR" class="modal-qr">
+          <p class="crypto-network-badge">USDT — Ethereum Network (ERC20)</p>
+          <p class="crypto-addr">0x381Dd751019c77F9f2FCcf8f632A1D3F07668159</p>
+          <button class="copy-btn" onclick="copyText('0x381Dd751019c77F9f2FCcf8f632A1D3F07668159', this)">
+            <i class="fas fa-copy"></i> Copy USDT Address
+          </button>
+        </div>
+
+        <p class="modal-note"><i class="fas fa-info-circle"></i> After payment, share TX hash on WhatsApp</p>
+        <a href="https://wa.me/917060946433" target="_blank">
+          <button class="btn modal-wa-btn"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button>
+        </a>
+      </div>
+
     </div>
   </div>
 

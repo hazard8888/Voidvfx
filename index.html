@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VOID EDITS – Premium Video Editing</title>
+  <!-- Favicon -->
+  <link rel="icon" href="https://api.qrserver.com/v1/create-qr-code/?size=32x32&data=VOID" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <!-- Your stylesheet -->
@@ -21,12 +23,15 @@
   <!-- Header -->
   <header id="header">
     <h1>VOID EDITS</h1>
-    <nav>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contact">Contact</a>
+    <nav id="main-nav">
+      <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+      <a href="#pricing" onclick="closeMenu()">Pricing</a>
+      <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
     </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
   <!-- Hero Section -->
@@ -35,8 +40,8 @@
       <h2>Premium Reel Editing</h2>
       <p>Viral Shorts / Cinematic Reels / Pro Storytelling</p>
       <div class="cta-buttons">
-        <a href="#pricing"><button class="btn">Explore Services</button></a>
-        <a href="#portfolio"><button class="btn btn-outline">View Portfolio</button></a>
+        <a href="#pricing" class="btn">Explore Services</a>
+        <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
       </div>
     </div>
     <div class="scroll-indicator">

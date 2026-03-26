@@ -273,14 +273,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ===== PAYMENT MODAL =====
-function openPayment() {
-  const modal = document.getElementById('paymentModal');
+const plans = {
+  basic:   { label: 'Basic — $10',   inr: 830  },
+  pro:     { label: 'Pro — $20',     inr: 1660 },
+  premium: { label: 'Premium — $35', inr: 2905 }
+};
+
+const UPI_ID   = 'aryanbangwal24@oksbi';
+const UPI_NAME = 'VOID+EDITS';
+
+function openPayment(plan) {
+  const modal  = document.getElementById('paymentModal');
+  const data   = plans[plan] || plans.basic;
+
+  // Set plan badge
+  document.getElementById('modal-plan-title').textContent = 'Complete Payment';
+  document.getElementById('modal-plan-badge').textContent = data.label;
+
+  // Build UPI links
+  const upiBase    = `pa=${UPI_ID}&pn=${UPI_NAME}&am=${data.inr}&cu=INR&tn=VOID+EDITS+Payment`;
+  const upiString  = `upi://pay?${upiBase}`;
+  const qrData     = encodeURIComponent(upiString);
+
+  document.getElementById('upi-qr').src           = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrData}`;
+  document.getElementById('gpay-link').href        = `tez://upi/pay?${upiBase}`;
+  document.getElementById('phonepe-link').href     = `phonepe://pay?${upiBase}`;
+  document.getElementById('paytm-link').href       = `paytmmp://pay?${upiBase}`;
+  document.getElementById('upi-generic-link').href = upiString;
+
+  // Reset to UPI tab
+  switchPayTab('upi', document.querySelector('.pay-tab'));
+
   modal.style.display = 'flex';
 }
 
 function closePayment() {
-  const modal = document.getElementById('paymentModal');
-  modal.style.display = 'none';
+  document.getElementById('paymentModal').style.display = 'none';
+}
+
+// Close modal when clicking dark backdrop
+document.getElementById('paymentModal').addEventListener('click', function(e) {
+  if (e.target === this) closePayment();
+});
+
+function switchPayTab(tab, btn) {
+  // Toggle panels
+  document.getElementById('tab-upi').style.display    = tab === 'upi'    ? 'block' : 'none';
+  document.getElementById('tab-crypto').style.display = tab === 'crypto' ? 'block' : 'none';
+
+  // Toggle button styles
+  document.querySelectorAll('.pay-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+function switchCrypto(coin, btn) {
+  ['btc', 'eth', 'usdt'].forEach(c => {
+    document.getElementById('crypto-' + c).style.display = c === coin ? 'block' : 'none';
+  });
+  document.querySelectorAll('.crypto-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
 }
 
 

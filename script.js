@@ -5,7 +5,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 100;
+// Fewer particles on mobile to avoid lag
+const particleCount = window.innerWidth < 768 ? 40 : 100;
 
 class Particle {
   constructor() {
@@ -72,6 +73,31 @@ animate();
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+});
+
+
+// ===== HAMBURGER MENU =====
+function toggleMenu() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function closeMenu() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.remove('open');
+  btn.classList.remove('open');
+}
+
+// Close menu if user clicks outside of it
+document.addEventListener('click', function(e) {
+  const nav = document.getElementById('main-nav');
+  const btn = document.getElementById('hamburger');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+    closeMenu();
+  }
 });
 
 
